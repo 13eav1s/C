@@ -1,0 +1,1 @@
+CMakeLists.txt not found in /Users/leonid/Documents/bmstu/Прога/Си/laba2/lab_02_01_02 Select CMakeLists.txt
