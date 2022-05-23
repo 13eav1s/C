@@ -1,0 +1,3 @@
+/Users/leonid/Documents/bmstu/Прога/Си/laba4/lab_04_01/cmake-build-debug/CMakeFiles/lab_04_01.dir
+/Users/leonid/Documents/bmstu/Прога/Си/laba4/lab_04_01/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/leonid/Documents/bmstu/Прога/Си/laba4/lab_04_01/cmake-build-debug/CMakeFiles/rebuild_cache.dir
