@@ -84,10 +84,10 @@ const char* my_strchr(const char* s, char c)
 }
 
 
-char* my_strrchr (const char *s, char c)
+char* my_strrchr (char *s, char c)
 {
     int flag = 0;
-    const char *s1;
+    char *s1;
     while (*s)
     {
         if (*s == c)
@@ -108,47 +108,98 @@ char* my_strrchr (const char *s, char c)
 }
 
 
-int main() {
-    // Запуск my strpbrk
-//    char str[] = "Police Academy";
-//    char key[] = "Aaeiou";
-//    // первый поиск
-//    char * pch = my_strpbrk (str, key);
-//    printf("\n");
-//    // пока есть гласные буквы в строке
-//    while (pch != NULL)
-//    {
-//        // печать гласного символа
-//        printf("%c ", *pch);
-//        // поиск гласных букв
-//        pch = my_strpbrk (pch+1,key);
-//    }
-//
-//    // Запуск my_strspn и my_strcspn
-//    //  Набор со строкой для поиска
-//    char str[N] = "0109001892";
-//    //  Набор символов, которые должны входить в искомый сегмент
-//    char sym[N] = "243";
-//
-//    // Определяем длину максимального сегмента, содержащего символы из sym
-//    printf("Длина максимального сегмента: %lu\n", my_strcspn(str, sym));
+int compare_strpbrk(void)
+{
+    int fail = 0;
+    char s[N][N] = {"123456789", "1234211", "321321", "987654321"};
+    char charset[N][N] = {"123", "123", "321", "3"};
+    for (int i = 0; i < 3; i++)
+    {
+        if (strpbrk(s[i], charset[i]) != my_strpbrk(s[i], charset[i]))
+        {
+            fail += 1;
+        }
+    }
+    return fail;
+}
 
-    // Массив со строкой для поиска
-    char str [11] = "0163456786";
-    // Код искомого символа
-    char ch = '6';
-    // Указатель на искомую переменную в строке,
-    // по которой осуществляется поиск.
-    char *ach;
 
-    // Ищем символ ‘6’
-    ach = my_strrchr(str,ch);
+int compare_strspn(void)
+{
+    int fail = 0;
+    char s[N][N] = {"123456789", "1234211", "321321", "987654321"};
+    char charset[N][N] = {"123", "123", "321", "3"};
+    for (int i = 0; i < 3; i++)
+    {
+        if (strspn(s[i], charset[i]) != my_strspn(s[i], charset[i]))
+        {
+            fail += 1;
+        }
+    }
+    return fail;
+}
 
-    // Выводим результат на консоль
-    if (ach==NULL)
-        printf ("Символ в строке не найден\n");
-    else
-        printf ("Искомый символ в строке на позиции # %d\n", (int)(ach - str));
 
+int compare_strcspn(void)
+{
+    int fail = 0;
+    char s[N][N] = {"123456789", "1234211", "321321", "987654321", ""};
+    char charset[N][N] = {"123", "123", "321", "3", ""};
+    for (int i = 0; i < 4; i++)
+    {
+        if (strcspn(s[i], charset[i]) != my_strcspn(s[i], charset[i]))
+        {
+            fail += 1;
+        }
+    }
+    return fail;
+}
+
+
+int compare_strchr(void)
+{
+    int fail = 0;
+    char s[N][N] = {"123456789", "1234211", "321321", "987654321", ""};
+    char charset[N] = {'1', '2', '1', '5', '3'};
+    for (int i = 0; i < 4; i++)
+    {
+        if (strchr(s[i], charset[i]) != my_strchr(s[i], charset[i]))
+        {
+            fail += 1;
+        }
+    }
+    return fail;
+}
+
+
+int compare_strrchr(void)
+{
+    int fail = 0;
+    char s[N][N] = {"123456789", "1234211", "321321", "987654321", ""};
+    char charset[N] = {'1', '2', '1', '5', '3'};
+    for (int i = 0; i < 4; i++)
+    {
+        if (strrchr(s[i], charset[i]) != my_strrchr(s[i], charset[i]))
+        {
+            fail += 1;
+        }
+    }
+    return fail;
+}
+
+
+int main()
+{
+    int compare[5];
+    compare[0] = compare_strpbrk();
+    compare[1] = compare_strspn();
+    compare[2] = compare_strcspn();
+    compare[3] = compare_strchr();
+    compare[4] = compare_strrchr();
+    printf("Количество проваленых тестов в strpbrk = %d\n", compare[0]);
+    printf("Количество проваленых тестов в strspn = %d\n", compare[1]);
+    printf("Количество проваленых тестов в strcspn = %d\n", compare[2]);
+    printf("Количество проваленых тестов в strchr = %d\n", compare[3]);
+    printf("Количество проваленых тестов в strrchr = %d\n", compare[4]);
     return 0;
 }
