@@ -84,8 +84,31 @@ const char* my_strchr(const char* s, char c)
 }
 
 
+char* my_strrchr (const char *s, char c)
+{
+    int flag = 0;
+    const char *s1;
+    while (*s)
+    {
+        if (*s == c)
+        {
+            s1 = s;
+            flag = 1;
+        }
+        s++;
+    }
+    if (flag == 0)
+    {
+        return NULL;
+    }
+    else
+    {
+        return s1;
+    }
+}
+
+
 int main() {
-    printf("hello world!");
     // Запуск my strpbrk
 //    char str[] = "Police Academy";
 //    char key[] = "Aaeiou";
@@ -111,7 +134,7 @@ int main() {
 //    printf("Длина максимального сегмента: %lu\n", my_strcspn(str, sym));
 
     // Массив со строкой для поиска
-    char str [11] = "0163456789";
+    char str [11] = "0163456786";
     // Код искомого символа
     char ch = '6';
     // Указатель на искомую переменную в строке,
@@ -119,7 +142,7 @@ int main() {
     char *ach;
 
     // Ищем символ ‘6’
-    ach = strchr (str,ch);
+    ach = my_strrchr(str,ch);
 
     // Выводим результат на консоль
     if (ach==NULL)
