@@ -1,0 +1,8 @@
+Result:
+a yes
+b no
+c no
+d yes
+e yes
+f yes
+g no

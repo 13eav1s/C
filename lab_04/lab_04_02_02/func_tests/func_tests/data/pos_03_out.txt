@@ -1,0 +1,5 @@
+Result:
+arr yes
+int no
+err yes
+ok no

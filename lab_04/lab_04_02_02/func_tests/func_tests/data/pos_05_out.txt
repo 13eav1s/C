@@ -1,0 +1,8 @@
+Result:
+ok yes
+oko yes
+koo no
+okk no
+ko no
+kkk yes
+ooo no

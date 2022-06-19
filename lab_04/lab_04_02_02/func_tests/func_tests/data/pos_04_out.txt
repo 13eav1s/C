@@ -1,0 +1,5 @@
+Result:
+12 yes
+ok yes
+ttx no
+reew no
